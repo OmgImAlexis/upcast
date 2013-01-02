@@ -97,21 +97,233 @@
                     upcast.is.restore();
                 });
 
-                function testShortcut (desc, type, fn) {
+                function testIsShortcut (desc, type, fn) {
                     test(desc, function () {
                         fn('foo');
                         assert.isTrue(upcast.is.withArgs('foo', type).calledOnce);
                     });
                 }
 
-                testShortcut('is.arr should call is with the expected arguments', 'array', upcast.is.arr);
-                testShortcut('is.bool should call is with the expected arguments', 'boolean', upcast.is.bool);
-                testShortcut('is.fn should call is with the expected arguments', 'function', upcast.is.fn);
-                testShortcut('is.nul should call is with the expected arguments', 'null', upcast.is.nul);
-                testShortcut('is.num should call is with the expected arguments', 'number', upcast.is.num);
-                testShortcut('is.obj should call is with the expected arguments', 'object', upcast.is.obj);
-                testShortcut('is.str should call is with the expected arguments', 'string', upcast.is.str);
-                testShortcut('is.und should call is with the expected arguments', 'undefined', upcast.is.und);
+                testIsShortcut('is.arr should call is with the expected arguments', 'array', upcast.is.arr);
+                testIsShortcut('is.bool should call is with the expected arguments', 'boolean', upcast.is.bool);
+                testIsShortcut('is.fn should call is with the expected arguments', 'function', upcast.is.fn);
+                testIsShortcut('is.nul should call is with the expected arguments', 'null', upcast.is.nul);
+                testIsShortcut('is.num should call is with the expected arguments', 'number', upcast.is.num);
+                testIsShortcut('is.obj should call is with the expected arguments', 'object', upcast.is.obj);
+                testIsShortcut('is.str should call is with the expected arguments', 'string', upcast.is.str);
+                testIsShortcut('is.und should call is with the expected arguments', 'undefined', upcast.is.und);
+
+            });
+
+        });
+
+        suite('to function:', function () {
+            var testFn = function () {};
+            testFn.foo = 'bar';
+
+            function testTo (desc, type, pairs) {
+                test(desc, function () {
+                    var i, len = pairs.length, pair;
+                    for (i = 0; i < len; i ++) {
+                        pair = pairs[i];
+                        if (isNaN(pair.to)) {
+                            assert.isTrue(isNaN(upcast.to(pair.from, type)));
+                        } else {
+                            assert.deepEqual(upcast.to(pair.from, type), pair.to);
+                        }
+                    }
+                });
+            }
+
+            function testToFn (desc, pairs) {
+                test(desc, function () {
+                    var i, len = pairs.length, pair;
+                    for (i = 0; i < len; i ++) {
+                        pair = pairs[i];
+                        if (isNaN(pair)) {
+                            assert.isTrue(isNaN(upcast.to(pair, 'function')));
+                        } else {
+                            assert.deepEqual(upcast.to(pair, 'function')(), pair);
+                        }
+                    }
+                });
+            }
+
+            testTo('should convert to arrays correctly', 'array', [
+                { from: ['a', 'b', 'c'], to: ['a', 'b', 'c'] },
+                { from: [1, 2, 3],       to: [1, 2, 3] },
+                { from: [],              to: [] },
+                { from: true,            to: [true] },
+                { from: false,           to: [false] },
+                { from: testFn,          to: [testFn] },
+                { from: null,            to: [] },
+                { from: 123,             to: [123] },
+                { from: NaN,             to: [NaN] },
+                { from: Infinity,        to: [Infinity] },
+                { from: {foo: 'bar'},    to: [{foo: 'bar'}] },
+                { from: 'foo',           to: ['f', 'o', 'o'] },
+                { from: '',              to: [] },
+                { from: undefined,       to: [] }
+            ]);
+
+            testTo('should convert to booleans correctly', 'boolean', [
+                { from: ['a', 'b', 'c'], to: true },
+                { from: [1, 2, 3],       to: true },
+                { from: [],              to: false },
+                { from: true,            to: true },
+                { from: false,           to: false },
+                { from: testFn,          to: true },
+                { from: null,            to: false },
+                { from: 123,             to: true },
+                { from: 0,               to: false },
+                { from: NaN,             to: false },
+                { from: Infinity,        to: true },
+                { from: {foo: 'bar'},    to: true },
+                { from: 'foo',           to: true },
+                { from: '',              to: false },
+                { from: undefined,       to: false }
+            ]);
+
+            testToFn('should convert to functions correctly', [
+                ['a', 'b', 'c'],
+                [1, 2, 3],
+                [],
+                true,
+                false,
+                null,
+                123,
+                0,
+                NaN,
+                Infinity,
+                {foo: 'bar'},
+                'foo',
+                '',
+                undefined
+            ]);
+
+            testTo('should convert to null correctly', 'null', [
+                { from: ['a', 'b', 'c'], to: null },
+                { from: [1, 2, 3],       to: null },
+                { from: [],              to: null },
+                { from: true,            to: null },
+                { from: false,           to: null },
+                { from: testFn,          to: null },
+                { from: null,            to: null },
+                { from: 123,             to: null },
+                { from: 0,               to: null },
+                { from: NaN,             to: null },
+                { from: Infinity,        to: null },
+                { from: {foo: 'bar'},    to: null },
+                { from: 'foo',           to: null },
+                { from: '',              to: null },
+                { from: undefined,       to: null }
+            ]);
+
+            testTo('should convert to numbers correctly', 'number', [
+                { from: ['a', 'b', 'c'], to: 0 },
+                { from: [1, 2, 3],       to: 123 },
+                { from: [],              to: 0 },
+                { from: true,            to: 1 },
+                { from: false,           to: 0 },
+                { from: testFn,          to: NaN },
+                { from: null,            to: 0 },
+                { from: 123,             to: 123 },
+                { from: NaN,             to: NaN },
+                { from: Infinity,        to: Infinity },
+                { from: {foo: 'bar'},    to: NaN },
+                { from: 'foo',           to: 0 },
+                { from: '',              to: 0 },
+                { from: undefined,       to: 0 }
+            ]);
+
+            testTo('should convert to objects correctly', 'object', [
+                { from: ['a', 'b', 'c'], to: {0: 'a', 1: 'b', 2: 'c'} },
+                { from: [1, 2, 3],       to: {0: 1, 1: 2, 2: 3} },
+                { from: [],              to: [] },
+                { from: true,            to: new Boolean(true) },
+                { from: false,           to: new Boolean(false) },
+                { from: testFn,          to: testFn },
+                { from: null,            to: {} },
+                { from: 123,             to: new Number(123) },
+                { from: NaN,             to: {} },
+                { from: Infinity,        to: new Number(Infinity) },
+                { from: {foo: 'bar'},    to: {foo: 'bar'} },
+                { from: 'foo',           to: {0: 'f', 1: 'o', 2: 'o'} },
+                { from: '',              to: new String() },
+                { from: undefined,       to: {} }
+            ]);
+
+            testTo('should convert to strings correctly', 'string', [
+                { from: ['a', 'b', 'c'], to: 'abc' },
+                { from: [1, 2, 3],       to: '123' },
+                { from: [],              to: '' },
+                { from: true,            to: 'true' },
+                { from: false,           to: 'false' },
+                { from: testFn,          to: 'function () {}' },
+                { from: null,            to: '' },
+                { from: 123,             to: '123' },
+                { from: NaN,             to: 'NaN' },
+                { from: Infinity,        to: 'Infinity' },
+                { from: {foo: 'bar'},    to: '[object Object]' },
+                { from: 'foo',           to: 'foo' },
+                { from: '',              to: '' },
+                { from: undefined,       to: '' }
+            ]);
+
+            testTo('should convert to undefined correctly', 'undefined', [
+                { from: ['a', 'b', 'c'], to: undefined },
+                { from: [1, 2, 3],       to: undefined },
+                { from: [],              to: undefined },
+                { from: true,            to: undefined },
+                { from: false,           to: undefined },
+                { from: testFn,          to: undefined },
+                { from: null,            to: undefined },
+                { from: 123,             to: undefined },
+                { from: 0,               to: undefined },
+                { from: NaN,             to: undefined },
+                { from: Infinity,        to: undefined },
+                { from: {foo: 'bar'},    to: undefined },
+                { from: 'foo',           to: undefined },
+                { from: '',              to: undefined },
+                { from: undefined,       to: undefined }
+            ]);
+
+            test('should have shortcut functions for all core types', function () {
+                assert.isFunction(upcast.to.arr);
+                assert.isFunction(upcast.to.bool);
+                assert.isFunction(upcast.to.fn);
+                assert.isFunction(upcast.to.nul);
+                assert.isFunction(upcast.to.num);
+                assert.isFunction(upcast.to.obj);
+                assert.isFunction(upcast.to.str);
+                assert.isFunction(upcast.to.und);
+            });
+
+            suite('shortcut functions:', function () {
+
+                setup(function () {
+                    sinon.stub(upcast, 'to');
+                });
+
+                teardown(function () {
+                    upcast.to.restore();
+                });
+
+                function testIsShortcut (desc, type, fn) {
+                    test(desc, function () {
+                        fn('foo');
+                        assert.isTrue(upcast.to.withArgs('foo', type).calledOnce);
+                    });
+                }
+
+                testIsShortcut('to.arr should call to with the expected arguments', 'array', upcast.to.arr);
+                testIsShortcut('to.bool should call to with the expected arguments', 'boolean', upcast.to.bool);
+                testIsShortcut('to.fn should call to with the expected arguments', 'function', upcast.to.fn);
+                testIsShortcut('to.nul should call to with the expected arguments', 'null', upcast.to.nul);
+                testIsShortcut('to.num should call to with the expected arguments', 'number', upcast.to.num);
+                testIsShortcut('to.obj should call to with the expected arguments', 'object', upcast.to.obj);
+                testIsShortcut('to.str should call to with the expected arguments', 'string', upcast.to.str);
+                testIsShortcut('to.und should call to with the expected arguments', 'undefined', upcast.to.und);
 
             });
 
