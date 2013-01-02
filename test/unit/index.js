@@ -40,30 +40,13 @@
                 });
             }
 
-            testType('should return the expected type when called with an array', 'array', [
-                [1, 2, 3], []
-            ]);
-
-            testType('should return the expected type when called with a boolean', 'boolean', [
-                true, false
-            ]);
-
-            testType('should return the expected type when called with a function', 'function', [
-                function () {}
-            ]);
-
+            testType('should return the expected type when called with an array', 'array', [[1, 2, 3], []]);
+            testType('should return the expected type when called with a boolean', 'boolean', [true, false]);
+            testType('should return the expected type when called with a function', 'function', [function () {}]);
             testType('should return the expected type when called with null', 'null', [null]);
-
-            testType('should return the expected type when called with a number', 'number', [
-                12, 1.2, NaN, Infinity
-            ]);
-
+            testType('should return the expected type when called with a number', 'number', [12, 1.2, NaN, Infinity]);
             testType('should return the expected type when called with an object', 'object', [{}]);
-
-            testType('should return the expected type when called with a string', 'string', [
-                'foo', ''
-            ]);
-
+            testType('should return the expected type when called with a string', 'string', ['foo', '']);
             testType('should return the expected type when called with undefined', 'undefined', [undefined]);
 
         });
@@ -122,19 +105,12 @@
                 }
 
                 testShortcut('is.arr should call is with the expected arguments', 'array', upcast.is.arr);
-
                 testShortcut('is.bool should call is with the expected arguments', 'boolean', upcast.is.bool);
-
                 testShortcut('is.fn should call is with the expected arguments', 'function', upcast.is.fn);
-
                 testShortcut('is.nul should call is with the expected arguments', 'null', upcast.is.nul);
-
                 testShortcut('is.num should call is with the expected arguments', 'number', upcast.is.num);
-
                 testShortcut('is.obj should call is with the expected arguments', 'object', upcast.is.obj);
-
                 testShortcut('is.str should call is with the expected arguments', 'string', upcast.is.str);
-
                 testShortcut('is.und should call is with the expected arguments', 'undefined', upcast.is.und);
 
             });
