@@ -7,14 +7,12 @@
         var str = Object.prototype.toString.call(val);
         switch (str) {
             case '[object Array]':
-            case '[object Boolean]':
+                return 'array';
             case '[object Null]':
-            case '[object Number]':
-            case '[object String]':
-                return str.replace(/^\[object ([a-z]+)\]$/i, '$1').toLowerCase();
-                break;
+                return 'null';
+            default:
+                return typeof val;
         }
-        return typeof val;
     }
     exports.type = type;
 
@@ -28,7 +26,7 @@
     // Shortcut type checkers
     function isShortcut (type) {
         return function (val) {
-            return is(val, type);
+            return exports.is(val, type);
         };
     }
     is.arr  = isShortcut('array');

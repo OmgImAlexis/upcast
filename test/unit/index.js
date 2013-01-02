@@ -1,3 +1,4 @@
+/*jshint maxlen: 140 */
 /*global setup, suite, teardown, test */
 (function () {
     'use strict';
@@ -40,29 +41,27 @@
             }
 
             testType('should return the expected type when called with an array', 'array', [
-                [1, 2, 3], new Array(1, 2, 3), []
+                [1, 2, 3], []
             ]);
 
             testType('should return the expected type when called with a boolean', 'boolean', [
-                true, false, new Boolean(true)
+                true, false
             ]);
 
             testType('should return the expected type when called with a function', 'function', [
-                function () {}, new Function()
+                function () {}
             ]);
 
             testType('should return the expected type when called with null', 'null', [null]);
 
             testType('should return the expected type when called with a number', 'number', [
-                12, 1.2, new Number(123), NaN, Infinity
+                12, 1.2, NaN, Infinity
             ]);
 
-            testType('should return the expected type when called with an object', 'object', [
-                {}, new Object()
-            ]);
+            testType('should return the expected type when called with an object', 'object', [{}]);
 
             testType('should return the expected type when called with a string', 'string', [
-                'foo', new String('bar'), ''
+                'foo', ''
             ]);
 
             testType('should return the expected type when called with undefined', 'undefined', [undefined]);
@@ -118,7 +117,7 @@
                 function testShortcut (desc, type, fn) {
                     test(desc, function () {
                         fn('foo');
-                        upcast.is.withArgs('foo', type).calledOnce;
+                        assert.isTrue(upcast.is.withArgs('foo', type).calledOnce);
                     });
                 }
 
