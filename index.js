@@ -45,7 +45,7 @@
     // Default casters
     to.cast = {
         array: {
-            null: function () { return []; },
+            'null': function () { return []; },
             string: function (val) { return val.split(''); },
             undefined: function () { return []; },
             _default: function (val) { return [val]; }
@@ -54,10 +54,10 @@
             array: function (val) { return val.length > 0; },
             _default: function (val) { return (val ? true : false); }
         },
-        function: {
+        'function': {
             _default: function (val) { return function () { return val; }; }
         },
-        null: {
+        'null': {
             _default: function () { return null; }
         },
         number: {
@@ -74,7 +74,7 @@
         },
         string: {
             array: function (val) { return val.join(''); },
-            null: function () { return ''; },
+            'null': function () { return ''; },
             undefined: function () { return ''; },
             _default: function (val) { return val + ''; }
         },

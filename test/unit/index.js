@@ -240,16 +240,16 @@
                 { from: ['a', 'b', 'c'], to: {0: 'a', 1: 'b', 2: 'c'} },
                 { from: [1, 2, 3],       to: {0: 1, 1: 2, 2: 3} },
                 { from: [],              to: [] },
-                { from: true,            to: new Boolean(true) },
-                { from: false,           to: new Boolean(false) },
+                { from: true,            to: Object(true) },
+                { from: false,           to: Object(false) },
                 { from: testFn,          to: testFn },
                 { from: null,            to: {} },
-                { from: 123,             to: new Number(123) },
+                { from: 123,             to: Object(123) },
                 { from: NaN,             to: {} },
-                { from: Infinity,        to: new Number(Infinity) },
+                { from: Infinity,        to: Object(Infinity) },
                 { from: {foo: 'bar'},    to: {foo: 'bar'} },
                 { from: 'foo',           to: {0: 'f', 1: 'o', 2: 'o'} },
-                { from: '',              to: new String() },
+                { from: '',              to: Object('') },
                 { from: undefined,       to: {} }
             ]);
 
