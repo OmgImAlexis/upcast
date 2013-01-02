@@ -25,6 +25,21 @@
     }
     exports.is = is;
 
+    // Shortcut type checkers
+    function isShortcut (type) {
+        return function (val) {
+            return is(val, type);
+        };
+    }
+    is.arr  = isShortcut('array');
+    is.bool = isShortcut('boolean');
+    is.fn   = isShortcut('function');
+    is.nul  = isShortcut('null');
+    is.num  = isShortcut('number');
+    is.obj  = isShortcut('object');
+    is.str  = isShortcut('string');
+    is.und  = isShortcut('undefined');
+
 
     // Cast an object to a given type
     function to () {}

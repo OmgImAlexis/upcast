@@ -94,6 +94,52 @@
                 assert.isFalse(upcast.is('bar', 'type1'));
             });
 
+            test('should have shortcut functions for all core types', function () {
+                assert.isFunction(upcast.is.arr);
+                assert.isFunction(upcast.is.bool);
+                assert.isFunction(upcast.is.fn);
+                assert.isFunction(upcast.is.nul);
+                assert.isFunction(upcast.is.num);
+                assert.isFunction(upcast.is.obj);
+                assert.isFunction(upcast.is.str);
+                assert.isFunction(upcast.is.und);
+            });
+
+            suite('shortcut functions:', function () {
+
+                setup(function () {
+                    sinon.stub(upcast, 'is');
+                });
+
+                teardown(function () {
+                    upcast.is.restore();
+                });
+
+                function testShortcut (desc, type, fn) {
+                    test(desc, function () {
+                        fn('foo');
+                        upcast.is.withArgs('foo', type).calledOnce;
+                    });
+                }
+
+                testShortcut('is.arr should call is with the expected arguments', 'array', upcast.is.arr);
+
+                testShortcut('is.bool should call is with the expected arguments', 'boolean', upcast.is.bool);
+
+                testShortcut('is.fn should call is with the expected arguments', 'function', upcast.is.fn);
+
+                testShortcut('is.nul should call is with the expected arguments', 'null', upcast.is.nul);
+
+                testShortcut('is.num should call is with the expected arguments', 'number', upcast.is.num);
+
+                testShortcut('is.obj should call is with the expected arguments', 'object', upcast.is.obj);
+
+                testShortcut('is.str should call is with the expected arguments', 'string', upcast.is.str);
+
+                testShortcut('is.und should call is with the expected arguments', 'undefined', upcast.is.und);
+
+            });
+
         });
 
     });
