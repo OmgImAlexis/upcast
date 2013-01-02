@@ -87,35 +87,23 @@
     };
 
 
-    // Shortcut type checkers
-    function isShortcut (type) {
-        return function (val) {
+    // Check/cast shortcuts
+    function shortcut (type, alias) {
+        is[alias] = function (val) {
             return exports.is(val, type);
         };
-    }
-    is.arr  = isShortcut('array');
-    is.bool = isShortcut('boolean');
-    is.fn   = isShortcut('function');
-    is.nul  = isShortcut('null');
-    is.num  = isShortcut('number');
-    is.obj  = isShortcut('object');
-    is.str  = isShortcut('string');
-    is.und  = isShortcut('undefined');
-
-    // Shortcut casters
-    function toShortcut (type) {
-        return function (val) {
+        to[alias] = function (val) {
             return exports.to(val, type);
         };
     }
-    to.arr  = toShortcut('array');
-    to.bool = toShortcut('boolean');
-    to.fn   = toShortcut('function');
-    to.nul  = toShortcut('null');
-    to.num  = toShortcut('number');
-    to.obj  = toShortcut('object');
-    to.str  = toShortcut('string');
-    to.und  = toShortcut('undefined');
+    shortcut('array', 'arr');
+    shortcut('boolean', 'bool');
+    shortcut('function', 'fn');
+    shortcut('null', 'nul');
+    shortcut('number', 'num');
+    shortcut('object', 'obj');
+    shortcut('string', 'str');
+    shortcut('undefined', 'und');
 
 
 } (typeof exports === 'undefined' ? (this.upcast = this.upcast || {}) : exports));
