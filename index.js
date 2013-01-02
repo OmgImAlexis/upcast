@@ -33,10 +33,7 @@
             return val;
         }
 
-        // Check for caster
-        // if (typeof to.cast[type] === 'undefined' || typeof to.cast[type]._default !== 'function') {
-        //     throw new Error('Cannot cast to type: \'' + type + '\'');
-        // }
+        // Todo: guarding
 
         // Get a caster and cast!
         var caster = to.cast[type][from] || to.cast[type]._default;
