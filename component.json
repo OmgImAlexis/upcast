@@ -1,0 +1,18 @@
+{
+    "name": "upcast",
+    "version": "0.0.0",
+
+    "description": "Upcast is a low-level JavaScript type checking and casting library",
+    "keywords": [ "cast", "check", "type", "types" ],
+    "author": "Rowan Manning (http://rowanmanning.co.uk/)",
+    "license": "MIT",
+
+    "repo": "rowanmanning/upcast",
+    "homepage": "https://github.com/rowanmanning/upcast",
+    "bugs": "https://github.com/rowanmanning/upcast/issues",
+
+    "main": "index.js",
+    "scripts": [
+        "index.js"
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "name": "upcast",
+    "version": "0.0.0",
+
+    "description": "Upcast is a low-level JavaScript type checking and casting library",
+    "keywords": [ "cast", "check", "type", "types" ],
+    "author": "Rowan Manning (http://rowanmanning.co.uk/)",
+
+    "repository": { "type": "git", "url": "https://github.com/rowanmanning/upcast.git" },
+    "homepage": "https://github.com/rowanmanning/upcast",
+    "bugs": "https://github.com/rowanmanning/upcast/issues",
+
+    "engines": { "node": ">=0.6.0" },
+    "dependencies": {},
+    "devDependencies": {
+        "chai": "1.4.x",
+        "jshint": "0.9.x",
+        "mocha": "1.7.x",
+        "sinon": "1.5.x"
+    },
+
+    "main": "./index",
+    "scripts": {
+        "lint": "echo \"$(./node_modules/.bin/jshint --config ./test/config/jshint.json ./index.js ./test)\"",
+        "test": "./node_modules/.bin/mocha --ui tdd --reporter spec --colors --recursive ./test/unit"
+    }
+}
