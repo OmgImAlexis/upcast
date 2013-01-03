@@ -36,51 +36,65 @@
         // Todo: guarding
 
         // Get a caster and cast!
-        var caster = to.cast[type][from] || to.cast[type]._default;
+        var caster = to.cast[type][from] || to.cast[type];
         return caster(val);
 
     }
     exports.to = to;
 
     // Default casters
-    to.cast = {
-        array: {
-            'null': function () { return []; },
-            string: function (val) { return val.split(''); },
-            undefined: function () { return []; },
-            _default: function (val) { return [val]; }
+    var cast = to.cast = {
+        array: function (val) {
+            return [val];
         },
-        boolean: {
-            array: function (val) { return val.length > 0; },
-            _default: function (val) { return (val ? true : false); }
+        boolean: function (val) {
+            return (val ? true : false);
         },
-        'function': {
-            _default: function (val) { return function () { return val; }; }
+        'function': function (val) {
+            return function () { return val; };
         },
-        'null': {
-            _default: function () { return null; }
+        'null': function () {
+            return null;
         },
-        number: {
-            array: function (val) { return to(to(val, 'string'), 'number'); },
-            string: function (val) {
-                var num = parseInt(val, 10);
-                return (isNaN(num) ? 0 : num);
-            },
-            undefined: function () { return 0; },
-            _default: function (val) { return Number(val); }
+        number: function (val) {
+            return Number(val);
         },
-        object: {
-            _default: function (val) { return new Object(val); }
+        object: function (val) {
+            return new Object(val);
         },
-        string: {
-            array: function (val) { return val.join(''); },
-            'null': function () { return ''; },
-            undefined: function () { return ''; },
-            _default: function (val) { return val + ''; }
+        string: function (val) {
+            return val + '';
         },
-        undefined: {
-            _default: function () { return void 0; }
+        'undefined': function () {
+            return void 0;
         }
+    };
+
+    // Special casters
+    cast.array['null'] = cast.array['undefined'] = function () {
+        return [];
+    };
+    cast.array.string = function (val) {
+        return val.split('');
+    };
+    cast.boolean.array = function (val) {
+        return val.length > 0;
+    };
+    cast.number.array = function (val) {
+        return to(to(val, 'string'), 'number');
+    };
+    cast.number.string = function (val) {
+        var num = parseInt(val, 10);
+        return (isNaN(num) ? 0 : num);
+    };
+    cast.number['undefined'] = function () {
+        return 0;
+    };
+    cast.string.array = function (val) {
+        return val.join('');
+    };
+    cast.string['null'] = cast.string['undefined'] = function () {
+        return '';
     };
 
 
