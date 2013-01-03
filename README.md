@@ -81,15 +81,6 @@ Check whether an object is of a given type. This accepts two arguments:
 **val:** *(mixed)* The object to check the type of.  
 **type:** *(string)* The type to check for. One of `array`, `boolean`, `function`, `null`, `number`, `object`, `string` or `undefined`.
 
-upcast.is.arr([]);
-upcast.is.bool(true);
-upcast.is.fn(function () {});
-upcast.is.nul(null);
-upcast.is.num(123);
-upcast.is.obj({});
-upcast.is.str('foo');
-upcast.is.und(undefined);
-
 This function follows the same rules outlined in [`upcast.type`](#upcasttype).
 
 ```js
