@@ -2,6 +2,24 @@
     'use strict';
 
 
+    // Type aliases
+    var alias = exports.alias = {};
+    alias.a = alias.arr = alias.array = 'array';
+    alias.b = alias.bool = alias.boolean = 'boolean';
+    alias.f = alias.fn = alias['function'] = 'function';
+    alias['null'] = 'null';
+    alias.n = alias.num = alias.number = 'number';
+    alias.o = alias.obj = alias.object = 'object';
+    alias.s = alias.str = alias.string = 'string';
+    alias['undefined'] = 'undefined';
+
+    // Resolve type aliases
+    function resolve (type) {
+        return exports.alias[type] || null;
+    }
+    exports.resolve = resolve;
+
+
     // Get an object's type
     function type (val) {
         var str = Object.prototype.toString.call(val);
@@ -19,7 +37,8 @@
 
     // Check whether an object is of a certain type
     function is (val, type) {
-        return (exports.type(val) === type);
+        var valType = exports.type(val);
+        return (valType === exports.resolve(type) || valType === type);
     }
     exports.is = is;
 
@@ -28,6 +47,7 @@
     function to (val, type) {
 
         // Get type and return if already correct
+        type = exports.resolve(type) || type;
         var from = exports.type(val);
         if (type === from) {
             return val;

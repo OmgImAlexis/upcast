@@ -76,6 +76,12 @@
                 assert.isFalse(upcast.is('bar', 'type1'));
             });
 
+            test('should resolve type aliases', function () {
+                upcast.type.withArgs([]).returns('array');
+                upcast.alias.seq = 'array';
+                assert.isTrue(upcast.is([], 'seq'));
+            });
+
             test('should have shortcut functions for all core types', function () {
                 assert.isFunction(upcast.is.arr);
                 assert.isFunction(upcast.is.bool);
@@ -283,6 +289,11 @@
                 { from: '',              to: undefined },
                 { from: undefined,       to: undefined }
             ]);
+
+            test('should resolve type aliases', function () {
+                upcast.alias.seq = 'array';
+                assert.deepEqual(upcast.to('foo', 'seq'), ['f', 'o', 'o']);
+            });
 
             test('should have shortcut functions for all core types', function () {
                 assert.isFunction(upcast.to.arr);
