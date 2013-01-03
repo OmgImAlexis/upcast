@@ -81,7 +81,7 @@ Check whether an object is of a given type. This accepts two arguments:
 **val:** *(mixed)* The object to check the type of.  
 **type:** *(string)* The type to check for. One of `array`, `boolean`, `function`, `null`, `number`, `object`, `string` or `undefined`.
 
-This function follows the same rules outlined in [`upcast.type`](#upcasttype).
+This function follows the same rules outlined in [`upcast.type`](#upcasttype) and allows you to use [type aliases](#type-aliases).
 
 ```js
 upcast.is('foo', 'string'); // true
@@ -108,7 +108,7 @@ upcast.to('foo', 'array'); // ['f', 'o', 'o']
 upcast.to(['f', 'o', 'o'], 'string'); // 'foo'
 ```
 
-The examples below illustrate the way types are converted.
+You can use [type aliases](#type-aliases) with this function. The examples below illustrate the way types are converted.
 
 #### Converting to an array
 
@@ -214,6 +214,26 @@ As expected, converting to undefined will always return `undefined`:
 ```js
 upcast.to('foo', 'undefined'); // undefined
 ```
+
+
+### Type aliases
+
+The [`is`](#upcastis) and [`to`](#upcastto) functions allow you to use aliases to certain core types. The following are equivalent:
+
+```js
+upcast.is([], 'array');
+upcast.is([], 'arr');
+upcast.is([], 'a');
+```
+
+The aliases available by default are:
+
+* **array:** `arr`, `a`
+* **boolean:** `bool`, `b`
+* **function:** `fn`, `f`
+* **number:** `num`, `n`
+* **object:** `obj`, `o`
+* **string:** `str`, `s`
 
 
 Development
