@@ -76,6 +76,12 @@
                 assert.isFalse(upcast.is('bar', 'type1'));
             });
 
+            test('should throw when called with a non-string type', function () {
+                assert.throws(function () {
+                    upcast.is('bar', 123);
+                }, /invalid argument: type/i);
+            });
+
             test('should resolve type aliases', function () {
                 upcast.type.withArgs([]).returns('array');
                 upcast.alias.seq = 'array';
@@ -255,9 +261,19 @@
                 { from: undefined,       to: undefined }
             ]);
 
+            test('should throw when called with a non-string type', function () {
+                assert.throws(function () {
+                    upcast.to('bar', 123);
+                }, /invalid argument: type/i);
+            });
+
             test('should resolve type aliases', function () {
                 upcast.alias.seq = 'array';
                 assert.deepEqual(upcast.to('foo', 'seq'), ['f', 'o', 'o']);
+            });
+
+            test('should guard against types without casters', function () {
+                assert.deepEqual(upcast.to('foo', 'poo'), 'foo');
             });
 
         });

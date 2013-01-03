@@ -37,6 +37,7 @@
 
     // Check whether an object is of a certain type
     function is (val, type) {
+        guardTypeArg(type);
         var valType = exports.type(val);
         return (valType === exports.resolve(type) || valType === type);
     }
@@ -45,6 +46,7 @@
 
     // Cast an object to a given type
     function to (val, type) {
+        guardTypeArg(type);
 
         // Get type and return if already correct
         type = exports.resolve(type) || type;
@@ -53,9 +55,10 @@
             return val;
         }
 
-        // Todo: guarding
-
         // Get a caster and cast!
+        if (!to.cast[type]) {
+            return val;
+        }
         var caster = to.cast[type][from] || to.cast[type];
         return caster(val);
 
@@ -116,6 +119,14 @@
     cast.string['null'] = cast.string['undefined'] = function () {
         return '';
     };
+
+
+    // Guarding functions
+    function guardTypeArg (type) {
+        if (typeof type !== 'string') {
+            throw new Error('Invalid argument: type is expected to be a string');
+        }
+    }
 
 
 } (typeof exports === 'undefined' ? (this.upcast = this.upcast || {}) : exports));
