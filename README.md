@@ -104,22 +104,6 @@ upcast.is(null, 'object'); // false
 ```
 
 
-### upcast.is shortcuts
-
-There are also a number of convenience methods for checking core types:
-
-```js
-upcast.is.arr([]);
-upcast.is.bool(true);
-upcast.is.fn(function () {});
-upcast.is.nul(null);
-upcast.is.num(123);
-upcast.is.obj({});
-upcast.is.str('foo');
-upcast.is.und(undefined);
-```
-
-
 ### upcast.to
 
 Convert an object to a specific type. This accepts two arguments:  
@@ -238,22 +222,6 @@ As expected, converting to undefined will always return `undefined`:
 
 ```js
 upcast.to('foo', 'undefined'); // undefined
-```
-
-
-### upcast.to shortcuts
-
-There are also a number of convenience methods for converting between core types:
-
-```js
-upcast.to.arr('foo');  // ['f', 'o', 'o']
-upcast.to.bool('foo'); // true
-upcast.to.fn('foo');   // function () { return 'foo'; }
-upcast.to.nul('foo');  // null
-upcast.to.num('foo');  // 0
-upcast.to.obj('foo');  // Object('foo')
-upcast.to.str('foo');  // 'foo'
-upcast.to.und('foo');  // undefined
 ```
 
 

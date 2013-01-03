@@ -82,41 +82,6 @@
                 assert.isTrue(upcast.is([], 'seq'));
             });
 
-            test('should have shortcut functions for all core types', function () {
-                assert.isFunction(upcast.is.arr);
-                assert.isFunction(upcast.is.bool);
-                assert.isFunction(upcast.is.fn);
-                assert.isFunction(upcast.is.num);
-                assert.isFunction(upcast.is.obj);
-                assert.isFunction(upcast.is.str);
-            });
-
-            suite('shortcut functions:', function () {
-
-                setup(function () {
-                    sinon.stub(upcast, 'is');
-                });
-
-                teardown(function () {
-                    upcast.is.restore();
-                });
-
-                function testIsShortcut (desc, type, fn) {
-                    test(desc, function () {
-                        fn('foo');
-                        assert.isTrue(upcast.is.withArgs('foo', type).calledOnce);
-                    });
-                }
-
-                testIsShortcut('is.arr should call is with the expected arguments', 'array', upcast.is.arr);
-                testIsShortcut('is.bool should call is with the expected arguments', 'boolean', upcast.is.bool);
-                testIsShortcut('is.fn should call is with the expected arguments', 'function', upcast.is.fn);
-                testIsShortcut('is.num should call is with the expected arguments', 'number', upcast.is.num);
-                testIsShortcut('is.obj should call is with the expected arguments', 'object', upcast.is.obj);
-                testIsShortcut('is.str should call is with the expected arguments', 'string', upcast.is.str);
-
-            });
-
         });
 
         suite('to function:', function () {
@@ -293,41 +258,6 @@
             test('should resolve type aliases', function () {
                 upcast.alias.seq = 'array';
                 assert.deepEqual(upcast.to('foo', 'seq'), ['f', 'o', 'o']);
-            });
-
-            test('should have shortcut functions for all core types', function () {
-                assert.isFunction(upcast.to.arr);
-                assert.isFunction(upcast.to.bool);
-                assert.isFunction(upcast.to.fn);
-                assert.isFunction(upcast.to.num);
-                assert.isFunction(upcast.to.obj);
-                assert.isFunction(upcast.to.str);
-            });
-
-            suite('shortcut functions:', function () {
-
-                setup(function () {
-                    sinon.stub(upcast, 'to');
-                });
-
-                teardown(function () {
-                    upcast.to.restore();
-                });
-
-                function testIsShortcut (desc, type, fn) {
-                    test(desc, function () {
-                        fn('foo');
-                        assert.isTrue(upcast.to.withArgs('foo', type).calledOnce);
-                    });
-                }
-
-                testIsShortcut('to.arr should call to with the expected arguments', 'array', upcast.to.arr);
-                testIsShortcut('to.bool should call to with the expected arguments', 'boolean', upcast.to.bool);
-                testIsShortcut('to.fn should call to with the expected arguments', 'function', upcast.to.fn);
-                testIsShortcut('to.num should call to with the expected arguments', 'number', upcast.to.num);
-                testIsShortcut('to.obj should call to with the expected arguments', 'object', upcast.to.obj);
-                testIsShortcut('to.str should call to with the expected arguments', 'string', upcast.to.str);
-
             });
 
         });

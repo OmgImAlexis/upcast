@@ -118,21 +118,4 @@
     };
 
 
-    // Check/cast shortcuts
-    function shortcut (type, alias) {
-        is[alias] = function (val) {
-            return exports.is(val, type);
-        };
-        to[alias] = function (val) {
-            return exports.to(val, type);
-        };
-    }
-    shortcut('array', 'arr');
-    shortcut('boolean', 'bool');
-    shortcut('function', 'fn');
-    shortcut('number', 'num');
-    shortcut('object', 'obj');
-    shortcut('string', 'str');
-
-
 } (typeof exports === 'undefined' ? (this.upcast = this.upcast || {}) : exports));
