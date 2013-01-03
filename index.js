@@ -110,11 +110,9 @@
     shortcut('array', 'arr');
     shortcut('boolean', 'bool');
     shortcut('function', 'fn');
-    shortcut('null', 'nul');
     shortcut('number', 'num');
     shortcut('object', 'obj');
     shortcut('string', 'str');
-    shortcut('undefined', 'und');
 
 
 } (typeof exports === 'undefined' ? (this.upcast = this.upcast || {}) : exports));

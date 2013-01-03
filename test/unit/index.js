@@ -80,11 +80,9 @@
                 assert.isFunction(upcast.is.arr);
                 assert.isFunction(upcast.is.bool);
                 assert.isFunction(upcast.is.fn);
-                assert.isFunction(upcast.is.nul);
                 assert.isFunction(upcast.is.num);
                 assert.isFunction(upcast.is.obj);
                 assert.isFunction(upcast.is.str);
-                assert.isFunction(upcast.is.und);
             });
 
             suite('shortcut functions:', function () {
@@ -107,11 +105,9 @@
                 testIsShortcut('is.arr should call is with the expected arguments', 'array', upcast.is.arr);
                 testIsShortcut('is.bool should call is with the expected arguments', 'boolean', upcast.is.bool);
                 testIsShortcut('is.fn should call is with the expected arguments', 'function', upcast.is.fn);
-                testIsShortcut('is.nul should call is with the expected arguments', 'null', upcast.is.nul);
                 testIsShortcut('is.num should call is with the expected arguments', 'number', upcast.is.num);
                 testIsShortcut('is.obj should call is with the expected arguments', 'object', upcast.is.obj);
                 testIsShortcut('is.str should call is with the expected arguments', 'string', upcast.is.str);
-                testIsShortcut('is.und should call is with the expected arguments', 'undefined', upcast.is.und);
 
             });
 
@@ -292,11 +288,9 @@
                 assert.isFunction(upcast.to.arr);
                 assert.isFunction(upcast.to.bool);
                 assert.isFunction(upcast.to.fn);
-                assert.isFunction(upcast.to.nul);
                 assert.isFunction(upcast.to.num);
                 assert.isFunction(upcast.to.obj);
                 assert.isFunction(upcast.to.str);
-                assert.isFunction(upcast.to.und);
             });
 
             suite('shortcut functions:', function () {
@@ -319,11 +313,9 @@
                 testIsShortcut('to.arr should call to with the expected arguments', 'array', upcast.to.arr);
                 testIsShortcut('to.bool should call to with the expected arguments', 'boolean', upcast.to.bool);
                 testIsShortcut('to.fn should call to with the expected arguments', 'function', upcast.to.fn);
-                testIsShortcut('to.nul should call to with the expected arguments', 'null', upcast.to.nul);
                 testIsShortcut('to.num should call to with the expected arguments', 'number', upcast.to.num);
                 testIsShortcut('to.obj should call to with the expected arguments', 'object', upcast.to.obj);
                 testIsShortcut('to.str should call to with the expected arguments', 'string', upcast.to.str);
-                testIsShortcut('to.und should call to with the expected arguments', 'undefined', upcast.to.und);
 
             });
 
