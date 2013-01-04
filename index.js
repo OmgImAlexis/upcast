@@ -15,7 +15,7 @@
 
     // Resolve type aliases
     function resolve (type) {
-        return exports.alias[type] || null;
+        return exports.alias[type] || type;
     }
     exports.resolve = resolve;
 
@@ -38,8 +38,7 @@
     // Check whether an object is of a certain type
     function is (val, type) {
         guardTypeArg(type);
-        var valType = exports.type(val);
-        return (valType === exports.resolve(type) || valType === type);
+        return (exports.type(val) === exports.resolve(type));
     }
     exports.is = is;
 
@@ -49,7 +48,7 @@
         guardTypeArg(type);
 
         // Get type and return if already correct
-        type = exports.resolve(type) || type;
+        type = exports.resolve(type);
         var from = exports.type(val);
         if (type === from) {
             return val;
