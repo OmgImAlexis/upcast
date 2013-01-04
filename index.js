@@ -22,15 +22,13 @@
 
     // Get an object's type
     function type (val) {
-        var str = Object.prototype.toString.call(val);
-        switch (str) {
-            case '[object Array]':
-                return 'array';
-            case '[object Null]':
-                return 'null';
-            default:
-                return typeof val;
+        if (val === null) {
+            return 'null';
         }
+        if (Object.prototype.toString.call(val) === '[object Array]') {
+            return 'array';
+        }
+        return typeof val;
     }
     exports.type = type;
 
