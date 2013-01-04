@@ -210,7 +210,6 @@
             { from: [],              to: '' },
             { from: true,            to: 'true' },
             { from: false,           to: 'false' },
-            { from: testFn,          to: 'function () {}' },
             { from: null,            to: '' },
             { from: 123,             to: '123' },
             { from: NaN,             to: 'NaN' },
@@ -220,6 +219,7 @@
             { from: '',              to: '' },
             { from: undefined,       to: '' }
         ]);
+        assert(/function/.test(JSON.stringify(upcast.to(function () {}, 'string'))), 'upcast.to converts to string correctly (from function)');
 
         testTo('upcast.to converts to undefined correctly', 'undefined', [
             { from: ['a', 'b', 'c'], to: undefined },
