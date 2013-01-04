@@ -115,7 +115,7 @@ You can use [type aliases](#type-aliases) with this function. The examples below
 Converting to an array from a boolean, function, number or object simply wraps the value in an array:
 
 ```js
-upcast.to('123', 'array'); // [123]
+upcast.to(123, 'array'); // [123]
 ```
 
 Strings are handled differently, an array is returned with each character in the string as an item:
