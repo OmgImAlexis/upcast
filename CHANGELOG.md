@@ -3,6 +3,13 @@ Upcast ChangeLog
 ================
 
 
+1.0.0 (2013-03-09)
+------------------
+
+* Get tests running properly in all supported browsers
+* House-keeping
+
+
 0.0.2 (2013-01-04)
 ------------------
 
