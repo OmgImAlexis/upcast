@@ -18,10 +18,10 @@
     },
     "devDependencies": {
         "browserify": "~2.2",
-        "chai": "~1.4",
         "express": "~3.1",
         "jshint": "~1.0",
         "mocha": "~1.8",
+        "proclaim": "~1.0",
         "sinon": "~1.5",
         "supervisor": "~0.5"
     },

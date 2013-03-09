@@ -4,7 +4,7 @@
     'use strict';
 
     // Dependencies
-    var assert = require('chai').assert;
+    var assert = require('proclaim');
     var sinon = require('sinon');
 
     // Test subject
