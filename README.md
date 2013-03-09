@@ -35,25 +35,21 @@ or by simply including `upcast.js` in your page:
 Usage
 -----
 
-Upcast exposes three simple functions:
-
-* **[type](#upcasttype)**: get the type of an object
-* **[is](#upcastis)**: check whether an object is of a given type
-* **[to](#upcastto)**: convert an object to a specific type
-
 In Node.js or using Component, you can include Upcast in your script by using require:
 
 ```js
 var upcast = require('upcast');
 ```
 
-If you're just including with a `<script>`, `upcast` is available in the global namespace:
+Upcast also works with AMD-style module loaders, just specify it as a dependency.
 
-```js
-var upcast = window.upcast;
-```
+If you're just including with a `<script>`, `upcast` is available as a global variable.
 
-The rest of the examples assume you've got the `upcast` variable already.
+Upcast exposes three simple functions:
+
+- **[type](#upcasttype)**: get the type of an object
+- **[is](#upcastis)**: check whether an object is of a given type
+- **[to](#upcastto)**: convert an object to a specific type
 
 
 ### upcast.type

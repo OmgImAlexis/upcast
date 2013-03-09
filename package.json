@@ -6,21 +6,25 @@
     "keywords": [ "cast", "check", "type", "types" ],
     "author": "Rowan Manning (http://rowanmanning.co.uk/)",
 
-    "repository": { "type": "git", "url": "https://github.com/rowanmanning/upcast.git" },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rowanmanning/upcast.git"
+    },
     "homepage": "https://github.com/rowanmanning/upcast",
     "bugs": "https://github.com/rowanmanning/upcast/issues",
 
-    "engines": { "node": ">=0.6.0" },
-    "dependencies": {},
+    "engines": {
+        "node": ">=0.6.0"
+    },
     "devDependencies": {
-        "browserify": "1.16.x",
-        "chai": "1.4.x",
-        "express": "3.0.x",
-        "glob": "3.1.x",
-        "jshint": "0.9.x",
-        "mocha": "1.7.x",
-        "sinon": "1.5.x",
-        "supervisor": "0.5.x"
+        "browserify": "~2.2",
+        "chai": "~1.4",
+        "express": "~3.1",
+        "glob": "~3.1",
+        "jshint": "~1.0",
+        "mocha": "~1.8",
+        "sinon": "~1.5",
+        "supervisor": "~0.5"
     },
 
     "main": "./lib/upcast.js",

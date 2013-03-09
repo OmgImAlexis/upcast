@@ -11,8 +11,8 @@
     "homepage": "https://github.com/rowanmanning/upcast",
     "bugs": "https://github.com/rowanmanning/upcast/issues",
 
-    "main": "index.js",
+    "main": "lib/upcast.js",
     "scripts": [
-        "index.js"
+        "lib/upcast.js"
     ]
 }
