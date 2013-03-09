@@ -23,9 +23,9 @@
         "supervisor": "0.5.x"
     },
 
-    "main": "./index",
+    "main": "./lib/upcast.js",
     "scripts": {
-        "lint": "echo \"$(./node_modules/.bin/jshint --config ./test/config/jshint.json ./index.js ./test/unit)\"",
+        "lint": "echo \"$(./node_modules/.bin/jshint --config ./test/config/jshint.json ./lib ./test/unit)\"",
         "test": "./node_modules/.bin/mocha --ui tdd --reporter spec --colors --recursive ./test/unit",
         "testapp": "./node_modules/.bin/supervisor -q ./test/runner/boot.js"
     }

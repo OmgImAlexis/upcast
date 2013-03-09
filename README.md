@@ -25,10 +25,10 @@ On the client side, you can either install Upcast through [Component][component]
 $ component install rowanmanning/upcast
 ```
 
-or by simply including `index.js` in your page:
+or by simply including `upcast.js` in your page:
 
 ```html
-<script src="path/to/upcast/index.js"></script>
+<script src="path/to/lib/upcast.js"></script>
 ```
 
 

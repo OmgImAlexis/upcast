@@ -33,7 +33,7 @@
         res.sendfile(dir + '/legacy.html');
     });
     app.get('/index.js', function (req, res) {
-        res.sendfile(root + '/index.js');
+        res.sendfile(root + '/lib/upcast.js');
     });
     app.get('/json3.min.js', function (req, res) {
         res.sendfile(dir + '/json3.min.js');

@@ -2,13 +2,13 @@
 /*global setup, suite, teardown, test */
 (function () {
     'use strict';
-    
+
     // Dependencies
     var assert = require('chai').assert;
     var sinon = require('sinon');
 
     // Test subject
-    var upcast = require('../..');
+    var upcast = require('../../lib/upcast');
 
     // Test suite
     suite('upcast:', function () {
