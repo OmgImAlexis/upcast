@@ -1,5 +1,5 @@
-/*jshint maxlen: 140 */
-/*global setup, suite, teardown, test */
+// jshint maxlen: 140
+// global afterEach, beforeEach, describe, it
 (function () {
     'use strict';
 
@@ -11,28 +11,20 @@
     var upcast = require('../../lib/upcast');
 
     // Test suite
-    suite('upcast:', function () {
+    describe('upcast', function () {
 
-        test('should be an object', function () {
+        it('should be an object', function () {
             assert.isObject(upcast);
         });
 
-        test('should have a type function', function () {
-            assert.isFunction(upcast.type);
-        });
+        describe('.type()', function () {
 
-        test('should have an is function', function () {
-            assert.isFunction(upcast.is);
-        });
-
-        test('should have a to function', function () {
-            assert.isFunction(upcast.to);
-        });
-
-        suite('type function:', function () {
+            it('should be a function', function () {
+                assert.isFunction(upcast.type);
+            });
 
             function testType (desc, type, values) {
-                test(desc, function () {
+                it(desc, function () {
                     var i, len = values.length;
                     for (i = 0; i < len; i ++) {
                         assert.strictEqual(upcast.type(values[i]), type);
@@ -51,38 +43,42 @@
 
         });
 
-        suite('is function:', function () {
+        describe('.is()', function () {
 
-            setup(function () {
+            beforeEach(function () {
                 sinon.stub(upcast, 'type');
                 upcast.type.withArgs('foo').returns('type1');
                 upcast.type.withArgs('bar').returns('type2');
             });
 
-            teardown(function () {
+            afterEach(function () {
                 upcast.type.restore();
             });
 
-            test('should utilise the type function', function () {
+            it('should be a function', function () {
+                assert.isFunction(upcast.is);
+            });
+
+            it('should utilise the type function', function () {
                 upcast.is('foo', 'type1');
                 assert.isTrue(upcast.type.calledOnce);
             });
 
-            test('should return true when called with the correct type', function () {
+            it('should return true when called with the correct type', function () {
                 assert.isTrue(upcast.is('foo', 'type1'));
             });
 
-            test('should return false when called with the incorrect type', function () {
+            it('should return false when called with the incorrect type', function () {
                 assert.isFalse(upcast.is('bar', 'type1'));
             });
 
-            test('should throw when called with a non-string type', function () {
+            it('should throw when called with a non-string type', function () {
                 assert.throws(function () {
                     upcast.is('bar', 123);
                 }, /invalid argument: type/i);
             });
 
-            test('should resolve type aliases', function () {
+            it('should resolve type aliases', function () {
                 upcast.type.withArgs([]).returns('array');
                 upcast.alias.seq = 'array';
                 assert.isTrue(upcast.is([], 'seq'));
@@ -90,12 +86,16 @@
 
         });
 
-        suite('to function:', function () {
+        describe('.to()', function () {
             var testFn = function () {};
             testFn.foo = 'bar';
 
+            it('should be a function', function () {
+                assert.isFunction(upcast.to);
+            });
+
             function testTo (desc, type, pairs) {
-                test(desc, function () {
+                it(desc, function () {
                     var i, len = pairs.length, pair;
                     for (i = 0; i < len; i ++) {
                         pair = pairs[i];
@@ -109,7 +109,7 @@
             }
 
             function testToFn (desc, pairs) {
-                test(desc, function () {
+                it(desc, function () {
                     var i, len = pairs.length, pair;
                     for (i = 0; i < len; i ++) {
                         pair = pairs[i];
@@ -261,18 +261,18 @@
                 { from: undefined,       to: undefined }
             ]);
 
-            test('should throw when called with a non-string type', function () {
+            it('should throw when called with a non-string type', function () {
                 assert.throws(function () {
                     upcast.to('bar', 123);
                 }, /invalid argument: type/i);
             });
 
-            test('should resolve type aliases', function () {
+            it('should resolve type aliases', function () {
                 upcast.alias.seq = 'array';
                 assert.deepEqual(upcast.to('foo', 'seq'), ['f', 'o', 'o']);
             });
 
-            test('should guard against types without casters', function () {
+            it('should guard against types without casters', function () {
                 assert.deepEqual(upcast.to('foo', 'poo'), 'foo');
             });
 

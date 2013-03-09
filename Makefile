@@ -21,7 +21,6 @@ test: test-unit
 test-unit:
 	@echo "Running unit tests..."
 	@./node_modules/.bin/mocha \
-		--ui tdd \
 		--reporter spec \
 		--colors \
 		--recursive \
