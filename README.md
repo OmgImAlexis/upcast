@@ -235,29 +235,24 @@ The aliases available by default are:
 Development
 -----------
 
-To develop Upcast, you'll need to clone the repo and install dependencies:
+To develop Upcast, you'll need to clone the repo and install dependencies with `make deps`. If you're on Windows, you'll also need to install [Make for Windows][make].
+
+Once you're set up, you can run the following commands:
 
 ```sh
-$ npm install
+$ make deps         # Install dependencies
+$ make lint         # Run JSHint with the correct config
+$ make test         # Run unit tests in Node
+$ make test-server  # Run a server for browser unit testing (visit localhost:3893)
 ```
 
-No code will be accepted unless all tests are passing and there are no lint errors. Commands are outlined below:
-
-### Lint code
-
-Run JSHint with the correct config against the code-base:
+When no build target is specified, make will run `deps lint test`. This means you can use the following command for brevity:
 
 ```sh
-$ npm run-script lint
+$ make
 ```
 
-### Run unit tests (CLI)
-
-Run unit tests on the command line in a Node environment:
-
-```sh
-$ npm test
-```
+Code with lint errors or no/failing tests will not be accepted, please use the build tools outlined above.
 
 
 License
@@ -268,6 +263,7 @@ Upcast is licensed under the [MIT][mit] license.
 
 
 [component]: https://github.com/component/component
+[make]: http://gnuwin32.sourceforge.net/packages/make.htm
 [mit]: http://opensource.org/licenses/mit-license.php
 [node]: http://nodejs.org/
 [travis]: https://travis-ci.org/rowanmanning/upcast
