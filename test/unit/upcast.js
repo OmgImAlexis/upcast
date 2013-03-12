@@ -1,5 +1,5 @@
-// jshint maxlen: 140
-// global afterEach, beforeEach, describe, it
+/*jshint maxlen: 140 */
+/*global afterEach, beforeEach, describe, it */
 (function () {
     'use strict';
 
