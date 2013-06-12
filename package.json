@@ -17,10 +17,10 @@
         "node": ">=0.6.0"
     },
     "devDependencies": {
-        "jshint": "~0.9",
+        "jshint": "~2.1",
         "mocha": "~1.11",
         "mocha-srv": "~0.1",
-        "proclaim": "~1.0",
+        "proclaim": "~1.2",
         "sinon": "~1.5"
     },
 
