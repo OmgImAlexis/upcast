@@ -1,6 +1,6 @@
 {
     "name": "upcast",
-    "version": "1.0.1",
+    "version": "1.0.2",
 
     "description": "Upcast is a low-level JavaScript type checking and casting library",
     "keywords": [ "cast", "check", "type", "types" ],

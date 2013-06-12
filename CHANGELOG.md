@@ -3,6 +3,13 @@ Upcast ChangeLog
 ================
 
 
+1.0.2 (2013-06-12)
+------------------
+
+* Update dependencies
+* Use mocha-srv for browser test running
+
+
 1.0.1 (2013-03-12)
 ------------------
 
