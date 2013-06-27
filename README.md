@@ -19,9 +19,10 @@ You can use Upcast on the server side with [Node.js][node] and npm:
 $ npm install upcast
 ```
 
-On the client side, you can either install Upcast through [Component][component]:
+On the client side, you can either install Upcast through [Bower][bower]/[Component][component]:
 
 ```sh
+$ bower install upcast
 $ component install rowanmanning/upcast
 ```
 
@@ -262,6 +263,7 @@ Upcast is licensed under the [MIT][mit] license.
 
 
 
+[bower]: http://bower.io/
 [component]: https://github.com/component/component
 [make]: http://gnuwin32.sourceforge.net/packages/make.htm
 [mit]: http://opensource.org/licenses/mit-license.php
