@@ -3,6 +3,13 @@ Upcast ChangeLog
 ================
 
 
+1.0.4 (2014-02-02)
+------------------
+
+* Update dependencies
+* Fix issue with converting strings with floats to numbers
+
+
 1.0.3 (2013-06-27)
 ------------------
 
