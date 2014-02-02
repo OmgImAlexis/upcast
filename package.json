@@ -17,11 +17,11 @@
         "node": ">=0.6.0"
     },
     "devDependencies": {
-        "jshint": "~2.1",
-        "mocha": "~1.11",
+        "jshint": "~2.4",
+        "mocha": "~1.17",
         "mocha-srv": "~0.1",
-        "proclaim": "~1.2",
-        "sinon": "~1.5"
+        "proclaim": "~2.0",
+        "sinon": "~1.8"
     },
 
     "main": "./lib/upcast.js",
