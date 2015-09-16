@@ -4,6 +4,8 @@ Upcast
 
 Upcast is a low-level JavaScript type checking and casting library. Upcast simplifies type-checking and converts between types in a more sensible and predictable way than using plain ol' JavaScript.
 
+**:bangbang: NOTE: This project is no longer being maintained. If you're interested in taking over maintenance of this repo, please contact me.**
+
 **Current Version:** *1.0.4*  
 **Automated Build Status:** [![Build Status][travis-status]][travis]  
 **Node Support:** *0.6, 0.8, 0.10*  
