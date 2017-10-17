@@ -8,7 +8,7 @@
 	const sinon = require('sinon');
 
     // Test subject
-	const upcast = require('.');
+	const upcast = require('./index.js');
 
     // Test suite
 	describe('upcast', () => {

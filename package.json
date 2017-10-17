@@ -31,7 +31,7 @@
   "main": "./index.js",
   "scripts": {
     "test": "xo && npm run test-unit",
-    "test-server": "mocha-srv ./test/unit",
+    "test-server": "mocha-srv ./test.js",
     "test-unit": "mocha --reporter spec --colors --recursive ./test"
   }
 }
