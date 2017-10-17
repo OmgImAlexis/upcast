@@ -2,13 +2,15 @@
 Upcast ChangeLog
 ================
 
-Upcoming
+2.0.0 (2017-10-17)
 -----------------
 
 * Removed Node support below v4 ([c6fa0e6](https://github.com/OmgImAlexis/upcast/commit/c6fa0e611e126ffae2f18d5ef96943757e3e1e2c))
 * Removed bower support ([2c646e6](https://github.com/OmgImAlexis/upcast/commit/2c646e6bcb5c8871e5dc15455fad51af8668ad7f))
 * Removed unmaintained notice ([8666a73](https://github.com/OmgImAlexis/upcast/commit/8666a73f935150554112899ce3d9061a5c4fb663))
-
+* Switched from mocha to ava for testing ([00c4b14](https://github.com/OmgImAlexis/upcast/commit/00c4b148c5cc298c2f1f8ed3609f9f2ff0d611c2))
+* Switched to using a class for the main lib ([d9e03c3](https://github.com/OmgImAlexis/upcast/commit/d9e03c397b7906dd483291b4825f82d2784b5bbf))
+* Switched to xo for linting ([35312fc](https://github.com/OmgImAlexis/upcast/commit/35312fcfaea7b87255b90c5b7f9ba9d0536335bc))
 
 1.0.4 (2014-02-02)
 ------------------
