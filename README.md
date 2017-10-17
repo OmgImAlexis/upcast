@@ -268,5 +268,5 @@ Upcast is licensed under the [MIT][mit] license.
 [make]: http://gnuwin32.sourceforge.net/packages/make.htm
 [mit]: http://opensource.org/licenses/mit-license.php
 [node]: http://nodejs.org/
-[travis]: https://travis-ci.org/rowanmanning/upcast
-[travis-status]: https://travis-ci.org/rowanmanning/upcast.png?branch=master
+[travis]: https://travis-ci.org/OmgImAlexis/upcast
+[travis-status]: https://travis-ci.org/OmgImAlexis/upcast.svg?branch=master
