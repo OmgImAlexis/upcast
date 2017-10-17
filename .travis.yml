@@ -8,6 +8,6 @@ node_js:
     - 8
 
 # Build script
-script: 'npm test'
+script: 'yarn test'
 
-after_script: 'npm coverage'
+after_script: 'yarn coverage'
