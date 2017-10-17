@@ -6,7 +6,7 @@ Upcast is a low-level JavaScript type checking and casting library. Upcast simpl
 
 **Current Version:** *1.0.4*  
 **Automated Build Status:** [![Build Status][travis-status]][travis]  
-**Node Support:** *0.6, 0.8, 0.10*  
+**Node Support:** *4, 5, 6, 7, 8+* We drop versions once it's [LTS][lts] ends.
 **Browser Support:** *Android Browser 2.2–4.2, Firefox 3.6, Firefox 4–19, Google Chrome 14–25, Internet Explorer 6–10, Mobile Safari iOS 3–6, Opera 12.10, Safari 5–6*
 
 
@@ -236,15 +236,14 @@ The aliases available by default are:
 Development
 -----------
 
-To develop Upcast, you'll need to clone the repo and install dependencies with `make deps`. If you're on Windows, you'll also need to install [Make for Windows][make].
+To develop Upcast, you'll need to clone the repo and install dependencies with `yarn install`.
 
 Once you're set up, you can run the following commands:
 
 ```console
-$ make deps         # Install dependencies
-$ make lint         # Run JSHint with the correct config
-$ make test         # Run unit tests in Node
-$ make test-server  # Run a server for browser unit testing (visit localhost:3000)
+$ yarn lint         # Run xo with the correct config
+$ yarn test         # Run unit tests in Node
+$ yarn test-server  # Run a server for browser unit testing (visit localhost:3000)
 ```
 
 When no build target is specified, make will run `deps lint test`. This means you can use the following command for brevity:
@@ -267,6 +266,7 @@ Upcast is licensed under the [MIT][mit] license.
 [component]: https://github.com/component/component
 [make]: http://gnuwin32.sourceforge.net/packages/make.htm
 [mit]: http://opensource.org/licenses/mit-license.php
+[lts]: https://github.com/nodejs/Release
 [node]: http://nodejs.org/
 [travis]: https://travis-ci.org/OmgImAlexis/upcast
 [travis-status]: https://travis-ci.org/OmgImAlexis/upcast.svg?branch=master

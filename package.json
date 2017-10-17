@@ -19,10 +19,9 @@
   "homepage": "https://github.com/rowanmanning/upcast",
   "bugs": "https://github.com/rowanmanning/upcast/issues",
   "engines": {
-    "node": ">=0.6.0"
+    "node": ">4"
   },
   "devDependencies": {
-    "jshint": "~2.9.5",
     "mocha": "~4.0.1",
     "mocha-srv": "~0.1",
     "proclaim": "~3.5.0",
@@ -31,6 +30,8 @@
   },
   "main": "./lib/upcast.js",
   "scripts": {
-    "test": "xo && make test"
+    "test": "xo && npm run test-unit",
+    "test-server": "mocha-srv ./test/unit",
+    "test-unit": "mocha --reporter spec --colors --recursive ./test"
   }
 }
