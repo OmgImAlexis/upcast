@@ -22,7 +22,7 @@ $ yarn/npm install upcast
 or by simply including `upcast.js` in your page:
 
 ```html
-<script src="path/to/lib/upcast.js"></script>
+<script src="path/to/upcast.js"></script>
 ```
 
 

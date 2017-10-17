@@ -28,7 +28,7 @@
     "sinon": "~4.0.1",
     "xo": "^0.18.2"
   },
-  "main": "./lib/upcast.js",
+  "main": "./index.js",
   "scripts": {
     "test": "xo && npm run test-unit",
     "test-server": "mocha-srv ./test/unit",
