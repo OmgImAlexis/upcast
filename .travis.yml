@@ -9,3 +9,5 @@ node_js:
 
 # Build script
 script: 'npm test'
+
+after_script: 'npm coverage'
