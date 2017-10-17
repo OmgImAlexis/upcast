@@ -1,4 +1,4 @@
-# Upcast [![Build Status](https://travis-ci.org/OmgImAlexis/upcast.svg?branch=master)](https://travis-ci.org/OmgImAlexis/upcast) [![Coverage Status](https://coveralls.io/repos/github/OmgImAlexis/upcast/badge.svg?branch=master)](https://coveralls.io/github/OmgImAlexis/upcast?branch=master)
+# Upcast [![Build Status](https://travis-ci.org/OmgImAlexis/upcast.svg?branch=master)](https://travis-ci.org/OmgImAlexis/upcast) [![Coverage Status](https://codecov.io/gh/OmgImAlexis/upcast/branch/master/graph/badge.svg)](https://codecov.io/gh/OmgImAlexis/upcast)
 
 > Upcast is a low-level JavaScript type checking and casting library. Upcast simplifies type-checking and converts between types in a more sensible and predictable way than using plain ol' JavaScript.
 
