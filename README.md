@@ -4,8 +4,6 @@ Upcast
 
 Upcast is a low-level JavaScript type checking and casting library. Upcast simplifies type-checking and converts between types in a more sensible and predictable way than using plain ol' JavaScript.
 
-**:bangbang: NOTE: This project is no longer being maintained. If you're interested in taking over maintenance of this repo, please contact me.**
-
 **Current Version:** *1.0.4*  
 **Automated Build Status:** [![Build Status][travis-status]][travis]  
 **Node Support:** *0.6, 0.8, 0.10*  
@@ -17,13 +15,13 @@ Getting Started
 
 You can use Upcast on the server side with [Node.js][node] and npm:
 
-```sh
+```console
 $ npm install upcast
 ```
 
 On the client side, you can either install Upcast through [Bower][bower]/[Component][component]:
 
-```sh
+```console
 $ bower install upcast
 $ component install rowanmanning/upcast
 ```
@@ -41,7 +39,7 @@ Usage
 In Node.js or using Component, you can include Upcast in your script by using require:
 
 ```js
-var upcast = require('upcast');
+const upcast = require('upcast');
 ```
 
 Upcast also works with AMD-style module loaders, just specify it as a dependency.
@@ -242,7 +240,7 @@ To develop Upcast, you'll need to clone the repo and install dependencies with `
 
 Once you're set up, you can run the following commands:
 
-```sh
+```console
 $ make deps         # Install dependencies
 $ make lint         # Run JSHint with the correct config
 $ make test         # Run unit tests in Node
@@ -251,7 +249,7 @@ $ make test-server  # Run a server for browser unit testing (visit localhost:300
 
 When no build target is specified, make will run `deps lint test`. This means you can use the following command for brevity:
 
-```sh
+```console
 $ make
 ```
 
