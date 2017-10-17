@@ -2,6 +2,13 @@
 Upcast ChangeLog
 ================
 
+Upcoming
+-----------------
+
+* Removed Node support below v4 ([c6fa0e6](https://github.com/OmgImAlexis/upcast/commit/c6fa0e611e126ffae2f18d5ef96943757e3e1e2c))
+* Removed bower support ([2c646e6](https://github.com/OmgImAlexis/upcast/commit/2c646e6bcb5c8871e5dc15455fad51af8668ad7f))
+* Removed unmaintained notice ([8666a73](https://github.com/OmgImAlexis/upcast/commit/8666a73f935150554112899ce3d9061a5c4fb663))
+
 
 1.0.4 (2014-02-02)
 ------------------
