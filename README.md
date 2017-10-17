@@ -1,13 +1,11 @@
-
 Upcast
 ======
 
 Upcast is a low-level JavaScript type checking and casting library. Upcast simplifies type-checking and converts between types in a more sensible and predictable way than using plain ol' JavaScript.
 
-**Current Version:** *1.0.4*  
-**Automated Build Status:** [![Build Status][travis-status]][travis]  
+**Current Version:** *2.0.1*
+**Automated Build Status:** [![Build Status][travis-status]][travis]
 **Node Support:** *4, 5, 6, 7, 8+* We drop versions once it's [LTS][lts] ends.
-**Browser Support:** *Android Browser 2.2–4.2, Firefox 3.6, Firefox 4–19, Google Chrome 14–25, Internet Explorer 6–10, Mobile Safari iOS 3–6, Opera 12.10, Safari 5–6*
 
 
 Getting Started
@@ -48,7 +46,7 @@ Upcast exposes three simple functions:
 
 ### upcast.type
 
-Get the type of an object. This accepts a single argument:  
+Get the type of an object. This accepts a single argument:
 **val:** *(mixed)* The object to get the type of.
 
 Types in Upcast are different to `typeof` in what is reported for arrays and `null`. See the example below:
@@ -67,8 +65,8 @@ upcast.type(undefined); // 'undefined'
 
 ### upcast.is
 
-Check whether an object is of a given type. This accepts two arguments:  
-**val:** *(mixed)* The object to check the type of.  
+Check whether an object is of a given type. This accepts two arguments:
+**val:** *(mixed)* The object to check the type of.
 **type:** *(string)* The type to check for. One of `array`, `boolean`, `function`, `null`, `number`, `object`, `string` or `undefined`.
 
 This function follows the same rules outlined in [`upcast.type`](#upcasttype) and allows you to use [type aliases](#type-aliases).
@@ -87,8 +85,8 @@ upcast.is(null, 'object'); // false
 
 ### upcast.to
 
-Convert an object to a specific type. This accepts two arguments:  
-**val:** *(mixed)* The object to convert.  
+Convert an object to a specific type. This accepts two arguments:
+**val:** *(mixed)* The object to convert.
 **type:** *(string)* The type to convert to. One of `array`, `boolean`, `function`, `null`, `number`, `object`, `string` or `undefined`.
 
 The way types are converted aims to be sensible and allow easy switching back-and-forth of common types. For example, switching between strings and arrays is quite fluid:
