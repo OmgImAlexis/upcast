@@ -1,3 +1,5 @@
+'use strict';
+
 // Guard a 'type' argument
 const guardTypeArg = type => {
     if (typeof type !== 'string') {

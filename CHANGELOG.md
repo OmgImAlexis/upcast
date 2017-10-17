@@ -2,7 +2,13 @@
 Upcast ChangeLog
 ================
 
+2.1.0 (2017-10-17)
+-----------------
+
+* Fixed node 4 and 5 support
+
 2.0.1 (2017-10-17)
+-----------------
 
 * Updated readme
 
