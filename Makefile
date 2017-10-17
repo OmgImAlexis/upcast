@@ -12,7 +12,7 @@ lint:
 	@echo "Linting JavaScript..."
 	@./node_modules/.bin/jshint \
 		--config ./test/config/jshint.json \
-		./lib ./test/unit
+		./lib ./test
 
 # Run all tests
 test: test-unit
@@ -24,7 +24,7 @@ test-unit:
 		--reporter spec \
 		--colors \
 		--recursive \
-		./test/unit
+		./test
 
 # Run the Node Test app for browser testing
 test-server:
