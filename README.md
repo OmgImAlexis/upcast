@@ -16,14 +16,7 @@ Getting Started
 You can use Upcast on the server side with [Node.js][node] and npm:
 
 ```console
-$ npm install upcast
-```
-
-On the client side, you can either install Upcast through [Bower][bower]/[Component][component]:
-
-```console
-$ bower install upcast
-$ component install rowanmanning/upcast
+$ yarn/npm install upcast
 ```
 
 or by simply including `upcast.js` in your page:
@@ -36,7 +29,7 @@ or by simply including `upcast.js` in your page:
 Usage
 -----
 
-In Node.js or using Component, you can include Upcast in your script by using require:
+In Node.js you can include Upcast in your script by using require:
 
 ```js
 const upcast = require('upcast');
@@ -262,9 +255,6 @@ Upcast is licensed under the [MIT][mit] license.
 
 
 
-[bower]: http://bower.io/
-[component]: https://github.com/component/component
-[make]: http://gnuwin32.sourceforge.net/packages/make.htm
 [mit]: http://opensource.org/licenses/mit-license.php
 [lts]: https://github.com/nodejs/Release
 [node]: http://nodejs.org/
