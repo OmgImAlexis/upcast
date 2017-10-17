@@ -2,3 +2,4 @@ build
 components
 node_modules
 npm-debug.log
+.nyc_output

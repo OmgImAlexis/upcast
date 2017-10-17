@@ -1,37 +1,55 @@
 {
-  "name": "upcast",
-  "version": "1.0.4",
-  "description": "Upcast is a low-level JavaScript type checking and casting library",
-  "keywords": [
-    "cast",
-    "check",
-    "type",
-    "types"
-  ],
-  "author": "Rowan Manning (http://rowanmanning.co.uk/)",
-  "contributors": [
-    "Alexis Tyler <xo@wvvw.me> (https://wvvw.me)"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rowanmanning/upcast.git"
-  },
-  "homepage": "https://github.com/rowanmanning/upcast",
-  "bugs": "https://github.com/rowanmanning/upcast/issues",
-  "engines": {
-    "node": ">4"
-  },
-  "devDependencies": {
-    "mocha": "~4.0.1",
-    "mocha-srv": "~0.1",
-    "proclaim": "~3.5.0",
-    "sinon": "~4.0.1",
-    "xo": "^0.18.2"
-  },
-  "main": "./index.js",
-  "scripts": {
-    "test": "xo && npm run test-unit",
-    "test-server": "mocha-srv ./test.js",
-    "test-unit": "mocha --reporter spec --colors --recursive ./test"
-  }
+    "name": "upcast",
+    "version": "1.0.4",
+    "description": "Upcast is a low-level JavaScript type checking and casting library",
+    "keywords": [
+        "cast",
+        "check",
+        "type",
+        "types"
+    ],
+    "author": "Rowan Manning (http://rowanmanning.co.uk/)",
+    "contributors": [
+        "Alexis Tyler <xo@wvvw.me> (https://wvvw.me)"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rowanmanning/upcast.git"
+    },
+    "homepage": "https://github.com/rowanmanning/upcast",
+    "bugs": "https://github.com/rowanmanning/upcast/issues",
+    "engines": {
+        "node": ">4"
+    },
+    "devDependencies": {
+        "ava": "^0.22.0",
+        "lint-staged": "^4.2.3",
+        "nyc": "^11.2.1",
+        "sinon": "~4.0.1",
+        "xo": "^0.18.2"
+    },
+    "main": "./index.js",
+    "scripts": {
+        "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+        "lint": "xo",
+        "precommit": "lint-staged && yarn test",
+        "test": "yarn lint && yarn test-coverage",
+        "test-coverage": "cross-env NODE_ENV=test nyc ava"
+    },
+    "xo": {
+        "space": 4,
+        "rules": {
+            "space-before-function-paren": [
+                "error",
+                "never"
+            ]
+        },
+        "envs": [
+            "node",
+            "es6"
+        ]
+    },
+    "dependencies": {
+        "cross-env": "^5.1.0"
+    }
 }
