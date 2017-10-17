@@ -1,51 +1,79 @@
-/* global define */
-(function (root, upcast) {
-	'use strict';
+// Guard a 'type' argument
+const guardTypeArg = type => {
+	if (typeof type !== 'string') {
+		throw new TypeError('Invalid argument: type is expected to be a string');
+	}
+};
 
-    // Utilities
-    // ------------
+class Upcast {
+	constructor() {
+		// Define aliases
+		this.alias = {
+			a: 'array',
+			arr: 'array',
+			array: 'array',
+			b: 'boolean',
+			bool: 'boolean',
+			boolean: 'boolean',
+			null: 'null',
+			n: 'number',
+			num: 'number',
+			number: 'number',
+			o: 'object',
+			obj: 'object',
+			object: 'object',
+			s: 'string',
+			str: 'string',
+			string: 'string',
+			undefined: 'undefined'
+		};
 
-    // Guard a 'type' argument
-	const guardTypeArg = type => {
-		if (typeof type !== 'string') {
-			throw new TypeError('Invalid argument: type is expected to be a string');
+		// Default casters
+		this.cast = {
+			array(val) {
+				return [val];
+			},
+			boolean(val) {
+				return (Boolean(val));
+			},
+			function(val) {
+				return function () {
+					return val;
+				};
+			},
+			null: () => null,
+			number: val => Number(val),
+			object: val => new Object(val), // eslint-disable-line no-new-object
+			string: val => String(val),
+			undefined: () => undefined
+		};
+
+		// Special casters
+		this.cast.array.null = () => [];
+		this.cast.array.undefined = () => [];
+		this.cast.array.string = val => val.split('');
+		this.cast.boolean.array = val => val.length > 0;
+		this.cast.number.array = val => this.to(this.to(val, 'string'), 'number');
+		this.cast.number.string = val => {
+			const num = Number(val, 10);
+			return (isNaN(num) ? 0 : num);
+		};
+		this.cast.number.undefined = () => 0;
+		this.cast.string.array = val => val.join('');
+		this.cast.string.null = () => '';
+		this.cast.string.undefined = () => '';
+	}
+
+	// Resolve type aliases
+	resolve(type) {
+		if (!this.alias[type] && !type) {
+			throw new Error(`Unknown type or alias: ${type}`);
 		}
-	};
+		return this.alias[type] || type;
+	}
 
-    // Type aliases
-    // ------------
-
-    // Define aliases
-	const alias = {
-		a: 'array',
-		arr: 'array',
-		array: 'array',
-		b: 'boolean',
-		bool: 'boolean',
-		boolean: 'boolean',
-		null: 'null',
-		n: 'number',
-		num: 'number',
-		number: 'number',
-		o: 'object',
-		obj: 'object',
-		object: 'object',
-		s: 'string',
-		str: 'string',
-		string: 'string',
-		undefined: 'undefined'
-	};
-	upcast.alias = alias;
-
-    // Resolve type aliases
-	const resolve = type => upcast.alias[type] || type;
-	upcast.resolve = resolve;
-
-    // Get type
-    // --------
-
-    // Get an object's type
-	const type = val => {
+	// Get an object's type
+	type(val) {
 		if (val === null) {
 			return 'null';
 		}
@@ -53,91 +81,32 @@
 			return 'array';
 		}
 		return typeof val;
-	};
-	upcast.type = type;
+	}
 
-    // Check type
-    // ----------
-
-    // Check whether an object is of a certain type
-	const is = (val, type) => {
+	// Check whether an object is of a certain type
+	is(val, type) {
 		guardTypeArg(type);
-		return (upcast.type(val) === upcast.resolve(type));
-	};
-	upcast.is = is;
+		return (this.type(val) === this.resolve(type));
+	}
 
-    // Cast
-    // ----
-
-    // Cast an object to a given type
-	const to = (val, type) => {
+	// Cast an object to a given type
+	to(val, type) {
 		guardTypeArg(type);
 
-        // Get type and return if already correct
-		type = upcast.resolve(type);
-		const from = upcast.type(val);
+		// Get type and return if already correct
+		type = this.resolve(type);
+		const from = this.type(val);
 		if (type === from) {
 			return val;
 		}
 
-        // Get a caster and cast!
-		if (!to.cast[type]) {
+		// Get a caster and cast!
+		if (!this.cast[type]) {
 			return val;
 		}
-		const caster = to.cast[type][from] || to.cast[type];
+		const caster = this.cast[type][from] || this.cast[type];
 		return caster(val);
-	};
-	upcast.to = to;
-
-    // Default casters
-	const cast = {
-		array(val) {
-			return [val];
-		},
-		boolean(val) {
-			return (Boolean(val));
-		},
-		function(val) {
-			return function () {
-				return val;
-			};
-		},
-		null: () => null,
-		number: val => Number(val),
-		object: val => new Object(val), // eslint-disable-line no-new-object
-		string: val => String(val),
-		undefined: () => undefined
-	};
-	to.cast = cast;
-
-    // Special casters
-	cast.array.null = () => [];
-	cast.array.undefined = () => [];
-	cast.array.string = val => val.split('');
-	cast.boolean.array = val => val.length > 0;
-	cast.number.array = val => to(to(val, 'string'), 'number');
-	cast.number.string = val => {
-		const num = Number(val, 10);
-		return (isNaN(num) ? 0 : num);
-	};
-	cast.number.undefined = () => 0;
-	cast.string.array = val => val.join('');
-	cast.string.null = () => '';
-	cast.string.undefined = () => '';
-
-    // Exports
-    // -------
-
-	if (typeof define !== 'undefined' && define.amd) {
-		// AMD
-		define([], () => {
-			return upcast;
-		});
-	} else if (typeof module !== 'undefined' && module.exports) {
-		// CommonJS
-		module.exports = upcast;
-	} else {
-		// Script tag
-		root.upcast = upcast;
 	}
-})(this, {});
+}
+
+module.exports = new Upcast();
