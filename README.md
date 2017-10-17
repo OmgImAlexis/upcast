@@ -1,41 +1,20 @@
-Upcast
-======
+# Upcast [![Build Status](https://travis-ci.org/OmgImAlexis/upcast.svg?branch=master)](https://travis-ci.org/OmgImAlexis/upcast) [![Coverage Status](https://coveralls.io/repos/github/OmgImAlexis/upcast/badge.svg?branch=master)](https://coveralls.io/github/OmgImAlexis/upcast?branch=master)
 
-Upcast is a low-level JavaScript type checking and casting library. Upcast simplifies type-checking and converts between types in a more sensible and predictable way than using plain ol' JavaScript.
-
-**Current Version:** *2.0.1*
-**Automated Build Status:** [![Build Status][travis-status]][travis]
-**Node Support:** *4, 5, 6, 7, 8+* We drop versions once it's [LTS][lts] ends.
-
+> Upcast is a low-level JavaScript type checking and casting library. Upcast simplifies type-checking and converts between types in a more sensible and predictable way than using plain ol' JavaScript.
 
 Getting Started
 ---------------
 
-You can use Upcast on the server side with [Node.js][node] and npm:
+You can use Upcast on the server side with [Node.js][node] and yarn/npm:
 
 ```console
-$ yarn/npm install upcast
-```
-
-or by simply including `upcast.js` in your page:
-
-```html
-<script src="path/to/upcast.js"></script>
+$ yarn add upcast
+$ npm install upcast
 ```
 
 
 Usage
 -----
-
-In Node.js you can include Upcast in your script by using require:
-
-```js
-const upcast = require('upcast');
-```
-
-Upcast also works with AMD-style module loaders, just specify it as a dependency.
-
-If you're just including with a `<script>`, `upcast` is available as a global variable.
 
 Upcast exposes three simple functions:
 
@@ -227,23 +206,15 @@ The aliases available by default are:
 Development
 -----------
 
-To develop Upcast, you'll need to clone the repo and install dependencies with `yarn install`.
+To work on Upcast you'll need to clone the repo and it's install dependencies with `git clone https://github.com/OmgImalexis/upcast && cd upcast && yarn install`.
 
 Once you're set up, you can run the following commands:
 
 ```console
-$ yarn lint         # Run xo with the correct config
-$ yarn test         # Run unit tests in Node
-$ yarn test-server  # Run a server for browser unit testing (visit localhost:3000)
+$ yarn lint           # Run xo to lint all js files
+$ yarn test           # Run unit tests with ava
+$ yarn test-coverage  # Run unit tests and coverage report with ava + nyc
 ```
-
-When no build target is specified, make will run `deps lint test`. This means you can use the following command for brevity:
-
-```console
-$ make
-```
-
-Code with lint errors or no/failing tests will not be accepted, please use the build tools outlined above.
 
 
 License
