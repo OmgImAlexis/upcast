@@ -14,10 +14,10 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/rowanmanning/upcast.git"
+        "url": "https://github.com/OmgImAlexis/upcast.git"
     },
-    "homepage": "https://github.com/rowanmanning/upcast",
-    "bugs": "https://github.com/rowanmanning/upcast/issues",
+    "homepage": "https://github.com/OmgImAlexisj/upcast",
+    "bugs": "https://github.com/OmgImAlexis/upcast/issues",
     "engines": {
         "node": ">4"
     },
