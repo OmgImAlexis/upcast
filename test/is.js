@@ -1,6 +1,6 @@
 const test = require('ava');
 const sinon = require('sinon');
-const Upcast = require('..');
+const Upcast = require('../src');
 
 test.beforeEach(t => {
     t.context.upcast = Upcast;

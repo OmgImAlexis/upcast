@@ -1,5 +1,5 @@
 const test = require('ava');
-const upcast = require('..');
+const upcast = require('../src');
 
 test('should be a function', t => {
     t.true(typeof upcast.type === 'function');

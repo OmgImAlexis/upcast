@@ -23,16 +23,20 @@
     },
     "devDependencies": {
         "ava": "^0.25.0",
+        "bili": "^2.2.7",
         "codecov": "^3.0.0",
         "lint-staged": "^6.1.1",
         "nyc": "^11.4.1",
         "sinon": "~4.3.0",
         "xo": "^0.20.2"
     },
-    "main": "./index.js",
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
         "lint": "xo",
+        "build": "bili --format cjs,es,umd,umd-min",
         "precommit": "lint-staged && yarn test",
         "test": "yarn lint && yarn test-coverage",
         "test-coverage": "cross-env NODE_ENV=test nyc ava"

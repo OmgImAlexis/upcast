@@ -36,7 +36,7 @@ class Upcast {
                 return [val];
             },
             boolean(val) {
-                return (Boolean(val));
+                return Boolean(val);
             },
             function(val) {
                 return function() {
@@ -53,10 +53,24 @@ class Upcast {
         // Special casters
         this.cast.array.null = () => [];
         this.cast.array.undefined = () => [];
-        this.cast.array.string = val => val.split('');
+        this.cast.array.string = val => {
+            if (val === 'false' || val === 'true') {
+                return [this.cast.boolean.string(val)];
+            }
+            return val.split('');
+        };
         this.cast.boolean.array = val => val.length > 0;
+        this.cast.boolean.string = val => {
+            if (val === 'false') {
+                return false;
+            }
+            return this.cast.boolean(val);
+        };
         this.cast.number.array = val => this.to(this.to(val, 'string'), 'number');
         this.cast.number.string = val => {
+            if (val === 'false' || val === 'true') {
+                val = this.cast.boolean.string(val);
+            }
             const num = Number(val, 10);
             return (isNaN(num) ? 0 : num);
         };
@@ -64,6 +78,12 @@ class Upcast {
         this.cast.string.array = val => val.join('');
         this.cast.string.null = () => '';
         this.cast.string.undefined = () => '';
+        this.cast.object.string = val => {
+            if (val === 'false' || val === 'true') {
+                val = this.cast.boolean.string(val);
+            }
+            return this.cast.object(val);
+        };
     }
 
     // Resolve type aliases
