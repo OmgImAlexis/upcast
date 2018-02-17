@@ -127,7 +127,7 @@ test('should convert to numbers correctly', testTo, [
     {from: undefined, to: 0}
 ], 'number');
 
-/* eslint-disable no-new-object */
+/* eslint-disable no-new-object, unicorn/new-for-builtins */
 test('should convert to objects correctly', testTo, [
     {from: ['a', 'b', 'c'], to: {0: 'a', 1: 'b', 2: 'c'}},
     {from: [1, 2, 3], to: {0: 1, 1: 2, 2: 3}},
