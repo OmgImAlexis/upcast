@@ -9,7 +9,7 @@ const guardTypeArg = type => {
 
 class Upcast {
     constructor() {
-		// Define aliases
+        // Define aliases
         this.alias = {
             a: 'array',
             arr: 'array',
@@ -30,7 +30,7 @@ class Upcast {
             undefined: 'undefined'
         };
 
-		// Default casters
+        // Default casters
         this.cast = {
             array(val) {
                 return [val];
@@ -50,7 +50,7 @@ class Upcast {
             undefined: () => undefined
         };
 
-		// Special casters
+        // Special casters
         this.cast.array.null = () => [];
         this.cast.array.undefined = () => [];
         this.cast.array.string = val => val.split('');
@@ -66,12 +66,12 @@ class Upcast {
         this.cast.string.undefined = () => '';
     }
 
-	// Resolve type aliases
+    // Resolve type aliases
     resolve(val) {
         return this.alias[val] || val;
     }
 
-	// Get an object's type
+    // Get an object's type
     type(val) {
         if (val === null) {
             return 'null';
@@ -82,24 +82,24 @@ class Upcast {
         return typeof val;
     }
 
-	// Check whether an object is of a certain type
+    // Check whether an object is of a certain type
     is(val, type) {
         guardTypeArg(type);
         return (this.type(val) === this.resolve(type));
     }
 
-	// Cast an object to a given type
+    // Cast an object to a given type
     to(val, type) {
         guardTypeArg(type);
 
-		// Get type and return if already correct
+        // Get type and return if already correct
         type = this.resolve(type);
         const from = this.type(val);
         if (type === from) {
             return val;
         }
 
-		// Get a caster and cast!
+        // Get a caster and cast!
         if (!this.cast[type]) {
             return val;
         }

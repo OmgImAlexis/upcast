@@ -22,12 +22,12 @@
         "node": ">4"
     },
     "devDependencies": {
-        "ava": "^0.22.0",
-        "codecov": "^2.3.1",
-        "lint-staged": "^4.2.3",
-        "nyc": "^11.2.1",
-        "sinon": "~4.0.1",
-        "xo": "^0.18.2"
+        "ava": "^0.25.0",
+        "codecov": "^3.0.0",
+        "lint-staged": "^6.1.1",
+        "nyc": "^11.4.1",
+        "sinon": "~4.3.0",
+        "xo": "^0.20.2"
     },
     "main": "./index.js",
     "scripts": {
@@ -51,6 +51,6 @@
         ]
     },
     "dependencies": {
-        "cross-env": "^5.1.0"
+        "cross-env": "^5.1.3"
     }
 }

@@ -112,22 +112,24 @@ test('should convert to numbers correctly', testTo, [
     {from: undefined, to: 0}
 ], 'number');
 
+/* eslint-disable no-new-object */
 test('should convert to objects correctly', testTo, [
     {from: ['a', 'b', 'c'], to: {0: 'a', 1: 'b', 2: 'c'}},
     {from: [1, 2, 3], to: {0: 1, 1: 2, 2: 3}},
     {from: [], to: []},
-    {from: true, to: Object(true)},
-    {from: false, to: Object(false)},
+    {from: true, to: new Object(true)},
+    {from: false, to: new Object(false)},
     {from: testFn, to: testFn},
     {from: null, to: {}},
-    {from: 123, to: Object(123)},
+    {from: 123, to: new Object(123)},
     {from: NaN, to: {}},
-    {from: Infinity, to: Object(Infinity)},
+    {from: Infinity, to: new Object(Infinity)},
     {from: {foo: 'bar'}, to: {foo: 'bar'}},
     {from: 'foo', to: {0: 'f', 1: 'o', 2: 'o'}},
-    {from: '', to: Object('')},
+    {from: '', to: new Object('')},
     {from: undefined, to: {}}
 ], 'object');
+/* eslint-enable */
 
 test('should convert to strings correctly', testTo, [
     {from: ['a', 'b', 'c'], to: 'abc'},
