@@ -33,6 +33,7 @@
     "files": [
         "dist"
     ],
+    "main": "dist/upcast.js",
     "scripts": {
         "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
         "lint": "xo",
