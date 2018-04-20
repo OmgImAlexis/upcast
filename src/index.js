@@ -7,6 +7,13 @@ const guardTypeArg = type => {
     }
 };
 
+// Guard a 'type' argument
+const guardTypeHandler = type => {
+    if (typeof type !== 'function') {
+        throw new TypeError('Invalid argument: handler is expected to be a function');
+    }
+};
+
 class Upcast {
     constructor() {
         // Define aliases
@@ -84,6 +91,14 @@ class Upcast {
             }
             return this.cast.object(val);
         };
+    }
+
+    // Add custom cast
+    add(type, handler) {
+        guardTypeArg(type);
+        guardTypeHandler(handler);
+
+        this.cast[type] = handler.bind(this);
     }
 
     // Resolve type aliases
