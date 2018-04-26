@@ -1,10 +1,10 @@
 pipeline:
-  build:
+  test:
     image: node:${NODE_VERSION}
     commands:
       - yarn
-      - yarn test
       - yarn build
+      - yarn test
 
   coverage:
     image: robertstettner/drone-codecov
