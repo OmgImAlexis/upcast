@@ -9,6 +9,8 @@ pipeline:
   coverage:
     image: robertstettner/drone-codecov
     token: 0732d94b-a52f-4099-b47a-46ffb15c713d
+    when:
+      branch: master
 
 matrix:
   NODE_VERSION:
