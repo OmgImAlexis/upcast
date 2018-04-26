@@ -2,7 +2,7 @@ pipeline:
   test:
     image: node:${NODE_VERSION}
     commands:
-      - yarn
+      - npm ci
       - yarn build
       - yarn test
 
