@@ -1,9 +1,6 @@
 pipeline:
   test:
     image: node:${NODE_VERSION}
-    cache:
-      mount:
-        - node_modules
     commands:
       - yarn
       - yarn build
@@ -24,3 +21,7 @@ matrix:
     - 8
     - 9
     - latest
+
+cache:
+  mount:
+    - node_modules
