@@ -5,7 +5,7 @@ pipeline:
       - yarn
       - yarn build
       - yarn test
-      - nyc report --reporter=text-lcov > coverage.lcov
+      - yarn generate-coverage
 
   coverage:
     image: robertstettner/drone-codecov
