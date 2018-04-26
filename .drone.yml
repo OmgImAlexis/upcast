@@ -1,6 +1,8 @@
 pipeline:
   test:
     image: node:${NODE_VERSION}
+    cache:
+      - node_modules
     commands:
       - yarn
       - yarn build
