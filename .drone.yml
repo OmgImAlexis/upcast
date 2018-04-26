@@ -7,14 +7,6 @@ pipeline:
       - yarn build
 
   coverage:
-    image: node
-    commands:
-      - yarn
-      - yarn coverage
-    when:
-      branch: master
-
-  codecov:
     image: robertstettner/drone-codecov
     token: 0732d94b-a52f-4099-b47a-46ffb15c713d
 
