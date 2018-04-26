@@ -1,0 +1,8 @@
+pipeline:
+  build:
+    image: node
+    commands:
+      - yarn
+      - yarn test
+      - yarn build
+
