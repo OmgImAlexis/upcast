@@ -1,10 +1,11 @@
 pipeline:
   build:
-    image: node
+    image: node:${NODE_VERSION}
     commands:
       - yarn
       - yarn test
       - yarn build
+
   coverage:
     image: node
     commands:
@@ -12,6 +13,13 @@ pipeline:
       - yarn coverage
     when:
       branch: master
+
   codecov:
     image: robertstettner/drone-codecov
     token: 0732d94b-a52f-4099-b47a-46ffb15c713d
+
+matrix:
+  NODE_VERSION:
+    - 6
+    - 8
+    - latest
