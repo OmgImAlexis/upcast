@@ -21,7 +21,3 @@ matrix:
     - 8
     - 9
     - latest
-
-cache:
-  mount:
-    - node_modules
