@@ -1,0 +1,23 @@
+pipeline:
+  test:
+    image: node:${NODE_VERSION}
+    commands:
+      - yarn
+      - yarn build
+      - yarn test
+      - yarn generate-coverage
+
+  coverage:
+    image: robertstettner/drone-codecov
+    token: 0732d94b-a52f-4099-b47a-46ffb15c713d
+    debug: true
+    # when:
+    #   branch: master
+
+matrix:
+  NODE_VERSION:
+    - 6
+    - 7
+    - 8
+    - 9
+    - latest

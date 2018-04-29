@@ -35,12 +35,12 @@
     ],
     "main": "dist/upcast.js",
     "scripts": {
-        "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+        "coverage": "NODE_ENV=test nyc ava",
+        "generate-coverage": "NODE_ENV=test nyc report --reporter=text-lcov > coverage.lcov",
         "lint": "xo",
         "build": "bili --format cjs,es,umd,umd-min",
         "precommit": "lint-staged && yarn test",
-        "test": "yarn lint && yarn test-coverage",
-        "test-coverage": "cross-env NODE_ENV=test nyc ava"
+        "test": "yarn lint && yarn coverage"
     },
     "xo": {
         "space": 4,
