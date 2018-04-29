@@ -2,5 +2,7 @@
   "extends": [
     "config:base"
   ],
-  supportPolicy: ['lts_latest']
+  "supportPolicy": [
+    "lts_latest"
+  ]
 }
