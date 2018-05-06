@@ -48,7 +48,8 @@
             "space-before-function-paren": [
                 "error",
                 "never"
-            ]
+            ],
+            "prefer-reflect": "off"
         },
         "envs": [
             "node",
