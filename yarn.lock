@@ -1375,9 +1375,9 @@ big.js@^3.1.3:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-3.2.0.tgz#a5fc298b81b9e0dca2e458824784b65c52ba588e"
 
-bili@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/bili/-/bili-3.1.1.tgz#43d68b2c450339d254c288f0c43a082e2cd0dd46"
+bili@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/bili/-/bili-3.1.2.tgz#0888ef9f479331c5f213899e2821a2e3ea35c72a"
   dependencies:
     "@babel/core" "^7.0.0-beta.39"
     "@babel/plugin-proposal-class-properties" "^7.0.0-beta.39"
