@@ -1,4 +1,5 @@
 # Upcast [![Build Status](https://travis-ci.org/OmgImAlexis/upcast.svg?branch=master)](https://travis-ci.org/OmgImAlexis/upcast) [![Coverage Status](https://codecov.io/gh/OmgImAlexis/upcast/branch/master/graph/badge.svg)](https://codecov.io/gh/OmgImAlexis/upcast)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FOmgImAlexis%2Fupcast.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FOmgImAlexis%2Fupcast?ref=badge_shield)
 
 > Upcast is a low-level JavaScript type checking and casting library. Upcast simplifies type-checking and converts between types in a more sensible and predictable way than using plain ol' JavaScript.
 
@@ -229,3 +230,7 @@ Upcast is licensed under the [MIT][mit] license.
 [node]: http://nodejs.org/
 [travis]: https://travis-ci.org/OmgImAlexis/upcast
 [travis-status]: https://travis-ci.org/OmgImAlexis/upcast.svg?branch=master
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FOmgImAlexis%2Fupcast.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FOmgImAlexis%2Fupcast?ref=badge_large)
