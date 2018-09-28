@@ -1,20 +1,35 @@
-'use strict';
-
-// Guard a 'type' argument
+/**
+ * Guard a 'type' argument
+ *
+ * @param {String} type argument's type
+ */
 const guardTypeArg = type => {
     if (typeof type !== 'string') {
         throw new TypeError('Invalid argument: type is expected to be a string');
     }
 };
 
-// Guard a 'type' argument
+/**
+ * Guard a 'type' handler
+ *
+ * @param {String} type handler's type
+ */
 const guardTypeHandler = type => {
     if (typeof type !== 'function') {
         throw new TypeError('Invalid argument: handler is expected to be a function');
     }
 };
 
+/**
+ * Upcast
+ *
+ * @class Upcast
+ */
 class Upcast {
+    /**
+     * Creates an instance of Upcast.
+     * @memberof Upcast
+     */
     constructor() {
         // Define aliases
         this.alias = {
@@ -93,7 +108,13 @@ class Upcast {
         };
     }
 
-    // Add custom cast
+    /**
+     * Add custom cast
+     *
+     * @param {String} type cast type
+     * @param {Function} handler cast handler
+     * @memberof Upcast
+     */
     add(type, handler) {
         guardTypeArg(type);
         guardTypeHandler(handler);
@@ -101,46 +122,71 @@ class Upcast {
         this.cast[type] = handler.bind(this);
     }
 
-    // Resolve type aliases
-    resolve(val) {
-        return this.alias[val] || val;
+    /**
+     * Resolve type aliases
+     *
+     * @param {String} alias Alias name
+     * @memberof Upcast
+     */
+    resolve(alias) {
+        return this.alias[alias] || alias;
     }
 
-    // Get an object's type
-    type(val) {
-        if (val === null) {
+    /**
+     * Get a object's type
+     *
+     * @param {String} type Object's type
+     * @returns
+     * @memberof Upcast
+     */
+    type(type) {
+        if (type === null) {
             return 'null';
         }
-        if (Object.prototype.toString.call(val) === '[object Array]') {
+        if (Object.prototype.toString.call(type) === '[object Array]') {
             return 'array';
         }
-        return typeof val;
+        return typeof type;
     }
 
-    // Check whether an object is of a certain type
-    is(val, type) {
+    /**
+     * Check whether an object is of a certain type
+     *
+     * @param {Object} obj object to check
+     * @param {String} type type to check
+     * @returns {*}
+     * @memberof Upcast
+     */
+    is(obj, type) {
         guardTypeArg(type);
-        return (this.type(val) === this.resolve(type));
+        return (this.type(obj) === this.resolve(type));
     }
 
-    // Cast an object to a given type
-    to(val, type) {
+    /**
+     * Cast an object to a given type
+     *
+     * @param {*} obj Object to cast
+     * @param {*} type cast type
+     * @returns {*}
+     * @memberof Upcast
+     */
+    to(obj, type) {
         guardTypeArg(type);
 
         // Get type and return if already correct
         type = this.resolve(type);
-        const from = this.type(val);
+        const from = this.type(obj);
         if (type === from) {
-            return val;
+            return obj;
         }
 
         // Get a caster and cast!
         if (!this.cast[type]) {
-            return val;
+            return obj;
         }
         const caster = this.cast[type][from] || this.cast[type];
-        return caster(val);
+        return caster(obj);
     }
 }
 
-module.exports = new Upcast();
+export default new Upcast();

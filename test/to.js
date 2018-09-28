@@ -1,5 +1,5 @@
-const test = require('ava');
-const upcast = require('../src');
+import test from 'ava';
+import upcast from '../main';
 
 const testFn = function() {};
 testFn.foo = 'bar';

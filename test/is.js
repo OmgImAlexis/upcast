@@ -1,6 +1,6 @@
-const test = require('ava');
-const sinon = require('sinon');
-const Upcast = require('../src');
+import test from 'ava';
+import sinon from 'sinon';
+import Upcast from '../main';
 
 test.beforeEach(t => {
     t.context.upcast = Upcast;
