@@ -24,7 +24,7 @@
     "devDependencies": {
         "ava": "0.25.0",
         "codecov": "3.1.0",
-        "lint-staged": "7.3.0",
+        "lint-staged": "8.1.5",
         "nyc": "13.0.1",
         "sinon": "6.3.4",
         "xo": "0.23.0"
